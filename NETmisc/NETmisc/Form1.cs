@@ -31,5 +31,10 @@ namespace NETmisc
             }
 
         }
+
+        private void btnCovarianceAndContravariance_Click(object sender, EventArgs e)
+        {
+            CovarianceAndContravariance.RunMe.Run();
+        }
     }
 }

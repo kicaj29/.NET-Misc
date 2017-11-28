@@ -79,6 +79,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CovarianceAndContravariance\CovarianceAndContravariance.csproj">
+      <Project>{a9aef194-1c0b-439d-a3dd-3ce3eaa623d6}</Project>
+      <Name>CovarianceAndContravariance</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ThrowVsThrowEx\ThrowVsThrowEx.csproj">
       <Project>{419e9adc-01cc-4e96-b91f-52bb0faf99f6}</Project>
       <Name>ThrowVsThrowEx</Name>
