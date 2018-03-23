@@ -10,3 +10,6 @@ https://stackoverflow.com/questions/2662369/covariance-and-contravariance-real-w
 https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/covariance-contravariance/index   
 For example since .net 4.0 IEnumerable is Covariant!!! Using out/in you can define own types
 that are covariant (casting up) or contravariant (casting down).
+
+## ??
+?? reacts only on null value, string.Empty is treated as not null value

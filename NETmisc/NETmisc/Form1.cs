@@ -36,5 +36,16 @@ namespace NETmisc
         {
             CovarianceAndContravariance.RunMe.Run();
         }
+
+        private void btnDoubleQuestionMark_Click(object sender, EventArgs e)
+        {
+            string x = null;
+            string y = string.Empty;
+            string z = default(string);
+
+            string x1 = x ?? "abc";
+            string y1 = y ?? "abc";
+            string z1 = z ?? "abc";
+        }
     }
 }

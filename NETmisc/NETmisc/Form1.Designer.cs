@@ -30,6 +30,7 @@
         {
             this.btnThrowVsThrowEx = new System.Windows.Forms.Button();
             this.btnCovarianceAndContravariance = new System.Windows.Forms.Button();
+            this.btnDoubleQuestionMark = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnThrowVsThrowEx
@@ -52,11 +53,22 @@
             this.btnCovarianceAndContravariance.UseVisualStyleBackColor = true;
             this.btnCovarianceAndContravariance.Click += new System.EventHandler(this.btnCovarianceAndContravariance_Click);
             // 
+            // btnDoubleQuestionMark
+            // 
+            this.btnDoubleQuestionMark.Location = new System.Drawing.Point(21, 137);
+            this.btnDoubleQuestionMark.Name = "btnDoubleQuestionMark";
+            this.btnDoubleQuestionMark.Size = new System.Drawing.Size(189, 23);
+            this.btnDoubleQuestionMark.TabIndex = 2;
+            this.btnDoubleQuestionMark.Text = "??";
+            this.btnDoubleQuestionMark.UseVisualStyleBackColor = true;
+            this.btnDoubleQuestionMark.Click += new System.EventHandler(this.btnDoubleQuestionMark_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(431, 351);
+            this.Controls.Add(this.btnDoubleQuestionMark);
             this.Controls.Add(this.btnCovarianceAndContravariance);
             this.Controls.Add(this.btnThrowVsThrowEx);
             this.Name = "Form1";
@@ -69,6 +81,7 @@
 
         private System.Windows.Forms.Button btnThrowVsThrowEx;
         private System.Windows.Forms.Button btnCovarianceAndContravariance;
+        private System.Windows.Forms.Button btnDoubleQuestionMark;
     }
 }
 
