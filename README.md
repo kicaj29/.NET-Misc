@@ -13,3 +13,9 @@ that are covariant (casting up) or contravariant (casting down).
 
 ## ??
 ?? reacts only on null value, string.Empty is treated as not null value
+
+## NuGets
+### NuGets for .NETFramework
+https://www.codeproject.com/Articles/1214420/Creating-a-Nuget-Package-Step-by-Step   
+https://dotnetcore.gaprogman.com/2018/04/26/how-to-create-nuget-packages/   
+

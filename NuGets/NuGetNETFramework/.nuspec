@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package  xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>    
+    <id>kicaj.netframeworkpackage</id>
+    <version>1.0.4</version>
+    <title>This is test .NET Framework nuget package</title>
+    <authors>kicaj</authors>
+    <owners>kicaj</owners>
+    <licenseUrl>http://no-license.com</licenseUrl>
+    <projectUrl>http://no-project.com</projectUrl>
+    <iconUrl>http://no-icon.com</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>some description</description>
+    <releaseNotes></releaseNotes>
+    <copyright></copyright>
+    <tags></tags>
+    <dependencies>
+      <dependency id="Newtonsoft.Json" version="11.0.2"  />
+    </dependencies>
+    <summary></summary>
+  </metadata>
+  <files>
+    <file src="readme.md" target="" />
+    <file src="ClassLibrary1\bin\Debug\ClassLibrary1.dll" target="lib\net45" />
+    <file src="ClassLibrary2\bin\Debug\ClassLibrary2.dll" target="lib\net45" />
+  </files>
+</package>
