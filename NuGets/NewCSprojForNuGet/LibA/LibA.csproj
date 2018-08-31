@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net461</TargetFramework>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <IncludeSymbols>true</IncludeSymbols>
+    <PackageVersion>1.0.1</PackageVersion>
+    <TargetsForTfmSpecificBuildOutput>PackageAdditionalBuildOutput</TargetsForTfmSpecificBuildOutput>
+    <TargetsForTfmSpecificContentInPackage>PackageAdditionalContent</TargetsForTfmSpecificContentInPackage>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference PrivateAssets="All" Include="..\LibB\LibB.csproj" />
+  </ItemGroup>
+
+  <Target Name="PackageAdditionalBuildOutput">
+    <ItemGroup>
+      <BuildOutputInPackage Include="..\LibB\bin\debug\LibB.dll" />
+      <BuildOutputInPackage Include="..\LibB\bin\debug\LibC.dll" />
+    </ItemGroup>
+  </Target>
+
+  <Target Name="PackageAdditionalContent">
+    <ItemGroup>
+      <!--
+      <TfmSpecificPackageFile Include="$(SolutionDir)$(SolutionName).Database.DemoData\bin\$(ConfigurationName)\*.dacpac">
+        <PackagePath>contentFiles\any\$(TargetFramework)\Databases</PackagePath>
+      </TfmSpecificPackageFile>
+      <TfmSpecificPackageFile Include="$(OutputPath)*.sql">
+        <PackagePath>contentFiles\any\$(TargetFramework)\Databases</PackagePath>
+      </TfmSpecificPackageFile>
+      <TfmSpecificPackageFile Include="$(OutputPath)*.xml">
+        <PackagePath>contentFiles\any\$(TargetFramework)\XmlDocumentation</PackagePath>
+        <PackageCopyToOutput>true</PackageCopyToOutput>
+      </TfmSpecificPackageFile>
+      -->
+    </ItemGroup>
+  </Target>
+
+</Project>

@@ -14,12 +14,6 @@ that are covariant (casting up) or contravariant (casting down).
 ## ??
 ?? reacts only on null value, string.Empty is treated as not null value
 
-## NuGets
-### NuGets for .NETFramework
-https://www.codeproject.com/Articles/1214420/Creating-a-Nuget-Package-Step-by-Step   
-https://dotnetcore.gaprogman.com/2018/04/26/how-to-create-nuget-packages/   
-
-
 ## Old csproj vs new csproj
 https://natemcmaster.com/blog/2017/03/09/vs2015-to-vs2017-upgrade/   
 
@@ -35,3 +29,34 @@ Notes:
 
 ### CSProjDotNetStandardAndConsolAppCore
 This is project created for .NET Core 2.0 and libs are in .NET Standard 2.0.
+
+## NuGets
+### NuGets for .NET Framework old csproj
+Folders: NuGetNETFramework, NuGetNETFrameworkRun.   
+For old csproj .nuspec file is required.   
+https://www.codeproject.com/Articles/1214420/Creating-a-Nuget-Package-Step-by-Step   
+https://dotnetcore.gaprogman.com/2018/04/26/how-to-create-nuget-packages/   
+### NuGets for .NET Framework new csproj
+Folder: NewCSproj.   
+For new csproj .nuspec file is not supported because nuget related data are avialble in csproj files.   
+
+#### Top-level dependencies
+*In NuGet 2, you listed every single package to be included. In NuGet 4 (VS 2017), you only need to list top-level dependencies. Everything else is that those top-level dependencies require will be imported automatically.*   
+**NOTE: the topic is about nuget dependencies and not dll dependencies!!!**
+
+https://docs.microsoft.com/en-us/dotnet/core/tools/csproj
+
+#### PrivateAssets
+By default all referenced csproj are treated as nuget dependency.
+It means that nuget A will have dependency to nuget B. In presented case there is only one nuget that contains dlls A, B, C so to not create nuget dependency to not existing nugets (B, C) tag *PrivateAssets* has to be used.   
+```
+<ProjectReference PrivateAssets="All" Include="..\LibB\LibB.csproj" />
+```
+
+
+
+
+
+
+
+
