@@ -48,15 +48,28 @@ https://docs.microsoft.com/en-us/dotnet/core/tools/csproj
 
 #### PrivateAssets
 By default all referenced csproj are treated as nuget dependency.
-It means that nuget A will have dependency to nuget B. In presented case there is only one nuget that contains dlls A, B, C so to not create nuget dependency to not existing nugets (B, C) tag *PrivateAssets* has to be used.   
+It means that nuget A will have dependency to nuget B. In presented case there is only one nuget that contains dlls A, B, C so to not create nuget dependency to not existing nuget B tag *PrivateAssets* has to be used.   
 ```
 <ProjectReference PrivateAssets="All" Include="..\LibB\LibB.csproj" />
+```   
+#### TargetsForTfmSpecificBuildOutput
+To include in the nuget additionall dlls element *TargetsForTfmSpecificBuildOutput* has to be used.   
+
+NOTE: this tag is needed even *csproj* references are used! It means that if *csproj* A has reference to *csproj* B to have dll B for the nuget A it has to explicit added via *TargetsForTfmSpecificBuildOutput*.
+
+```
+<TargetsForTfmSpecificBuildOutput>PackageAdditionalBuildOutput</TargetsForTfmSpecificBuildOutput>
 ```
 
+```
+  <Target Name="PackageAdditionalBuildOutput">
+    <ItemGroup>
+      <BuildOutputInPackage Include="..\LibB\bin\debug\LibB.dll" />
+      <BuildOutputInPackage Include="..\LibB\bin\debug\LibC.dll" />
+    </ItemGroup>
+  </Target>
+```
 
-
-
-
-
-
+#### TargetsForTfmSpecificContentInPackage
+This element allows to add any other files that should be placed in the nuget. It can be used e.g. to include *dacpac* files.
 
