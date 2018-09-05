@@ -78,4 +78,8 @@ Because after adding dependency to a nuget that contains *dacpac* files the file
 
 In *UseNuGet.sln* was created folder *NugetContent* for stuff like *dacpac* files. In this case it was copied manually. Next this *dacpac* can be referenced by other *sqlproj* files from the current solution.   
 
-NOTE: remember about handling an issue with not executing pre-deployment and pos-deployment scripts from the referenced *dacpac* files (also from the referenced *sqlproj* files). More info about it can be found in the [sql repo](https://github.com/kicaj29/sql#how-to-reference-between-sqlproj-files).
+NOTE: remember about handling an issue with not executing pre-deployment and pos-deployment scripts from the referenced *dacpac* files (also from the referenced *sqlproj* files). More info about it can be found in the [sql repo](https://github.com/kicaj29/sql#how-to-reference-between-sqlproj-files).   
+### Floating versioning
+[Docs](https://docs.microsoft.com/en-us/nuget/consume-packages/dependency-resolution#floating-versions).   
+
+[Docs2](https://docs.microsoft.com/en-us/nuget/reference/package-versioning#version-ranges-and-wildcards).
