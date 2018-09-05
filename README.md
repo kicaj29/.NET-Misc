@@ -42,7 +42,7 @@ For new csproj .nuspec file is not supported because nuget related data are avia
 
 #### Top-level dependencies
 *In NuGet 2, you listed every single package to be included. In NuGet 4 (VS 2017), you only need to list top-level dependencies. Everything else is that those top-level dependencies require will be imported automatically.*   
-**NOTE: the topic is about nuget dependencies and not dll dependencies!!!**
+**NOTE: the topic is about nuget dependencies and not dll references!!!**
 
 https://docs.microsoft.com/en-us/dotnet/core/tools/csproj
 
@@ -73,3 +73,9 @@ NOTE: this tag is needed even *csproj* references are used! It means that if *cs
 #### TargetsForTfmSpecificContentInPackage
 This element allows to add any other files that should be placed in the nuget. It can be used e.g. to include *dacpac* files.
 
+### Use nuget that contains *dacpacs*
+Because after adding dependency to a nuget that contains *dacpac* files the files are not automatically added to the current solution/project it has to be done manually or by some script. *Dacpac* files have to be uncpack from the nuget and copied to some folder in the current solution/project.   
+
+In *UseNuGet.sln* was created folder *NugetContent* for stuff like *dacpac* files. In this case it was copied manually. Next this *dacpac* can be referenced by other *sqlproj* files from the current solution.   
+
+NOTE: remember about handling an issue with not executing pre-deployment and pos-deployment scripts from the referenced *dacpac* files (also from the referenced *sqlproj* files). More info about it can be found in the [sql repo](https://github.com/kicaj29/sql#how-to-reference-between-sqlproj-files).

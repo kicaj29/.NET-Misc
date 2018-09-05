@@ -4,16 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <Name>SSDTfirst</Name>
+    <Name>SSDTfirstA</Name>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
-    <ProjectGuid>{26e5cf9c-e294-43a5-a587-33fc429038f6}</ProjectGuid>
+    <ProjectGuid>{5c6b210e-c4c2-49f2-8bf1-05a38a1bf6b4}</ProjectGuid>
     <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
-    <RootNamespace>SSDTfirst</RootNamespace>
-    <AssemblyName>SSDTfirst</AssemblyName>
+    <RootNamespace>SSDTfirstA</RootNamespace>
+    <AssemblyName>SSDTfirstA</AssemblyName>
     <ModelCollation>1033, CI</ModelCollation>
     <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
     <DeployToDatabase>True</DeployToDatabase>
@@ -57,32 +57,14 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
-    <Folder Include="Schema" />
-    <Folder Include="Schema\Schema1" />
-    <Folder Include="Schema\Schema1\Tables" />
-    <Folder Include="Scripts" />
-    <Folder Include="Security" />
-    <Folder Include="Security\Schema" />
   </ItemGroup>
   <ItemGroup>
-    <SqlCmdVariable Include="SqlDacName">
-      <DefaultValue>DefaultName</DefaultValue>
-      <Value>$(Name)</Value>
-    </SqlCmdVariable>
-    <SqlCmdVariable Include="SqlDacVersion">
-      <DefaultValue>DefaultVersion</DefaultValue>
-      <Value>$(DacVersion)</Value>
-    </SqlCmdVariable>
+    <ArtifactReference Include="..\UseNuGet\NugetContent\SSDTfirst.dacpac">
+      <HintPath>..\UseNuGet\NugetContent\SSDTfirst.dacpac</HintPath>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+    </ArtifactReference>
   </ItemGroup>
   <ItemGroup>
-    <Build Include="Security\Schema\Schema1.sql" />
-    <Build Include="Schema\Schema1\Tables\Table1.sql" />
-    <Build Include="Schema\Schema1\Tables\Versions.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <PostDeploy Include="Scripts\Script.PostDeployment.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <PreDeploy Include="Scripts\Script.PreDeployment.sql" />
+    <None Include="SSDTfirstA.publish.xml" />
   </ItemGroup>
 </Project>
