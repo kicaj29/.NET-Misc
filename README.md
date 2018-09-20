@@ -151,7 +151,7 @@ NOTE: like mentioned in the above link the .pdb file also contains path to the l
 6. When the application runs the symbols for the dlls A, B, C are not loaded
 which is weird because documentation says *.pdb files that are present in the same folder as the DLL or executable file*.
 
-![symbols not loaded](\images\symbols-not-loaded.png)
+![symbols not loaded](images/symbols-not-loaded.png)
 
 More [here](https://docs.microsoft.com/en-us/visualstudio/debugger/specify-symbol-dot-pdb-and-source-files-in-the-visual-studio-debugger?view=vs-2017).
 
