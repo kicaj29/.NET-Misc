@@ -5,7 +5,7 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <IncludeSymbols>true</IncludeSymbols>  
-    <PackageVersion>1.0.2</PackageVersion>
+    <PackageVersion>2.0.0-rc.4</PackageVersion>
     <TargetsForTfmSpecificBuildOutput>PackageAdditionalBuildOutput</TargetsForTfmSpecificBuildOutput>
     <TargetsForTfmSpecificContentInPackage>PackageAdditionalContent</TargetsForTfmSpecificContentInPackage>
   </PropertyGroup>
@@ -25,6 +25,10 @@
     <ItemGroup>      
       <TfmSpecificPackageFile Include="..\SSDTfirst\bin\$(ConfigurationName)\*.dacpac">
         <PackagePath>contentFiles\Databases</PackagePath>
+      </TfmSpecificPackageFile>
+      <TfmSpecificPackageFile Include="$(OutputPath)*.pdb">
+        <PackagePath>lib\$(TargetFramework)\</PackagePath>
+        <PackageCopyToOutput>true</PackageCopyToOutput>
       </TfmSpecificPackageFile>
     </ItemGroup>
   </Target>
