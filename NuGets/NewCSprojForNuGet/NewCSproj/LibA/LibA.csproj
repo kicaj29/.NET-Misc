@@ -5,7 +5,7 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <IncludeSymbols>true</IncludeSymbols>  
-    <PackageVersion>2.0.0-rc.4</PackageVersion>
+    <PackageVersion>2.0.0-rc.5</PackageVersion>
     <TargetsForTfmSpecificBuildOutput>PackageAdditionalBuildOutput</TargetsForTfmSpecificBuildOutput>
     <TargetsForTfmSpecificContentInPackage>PackageAdditionalContent</TargetsForTfmSpecificContentInPackage>
   </PropertyGroup>
@@ -16,8 +16,8 @@
 
   <Target Name="PackageAdditionalBuildOutput">
     <ItemGroup>
-      <BuildOutputInPackage Include="..\LibB\bin\debug\LibB.dll" />
-      <BuildOutputInPackage Include="..\LibB\bin\debug\LibC.dll" />
+      <BuildOutputInPackage Include="..\LibB\bin\debug\$(TargetFramework)\LibB.dll" />
+      <BuildOutputInPackage Include="..\LibC\bin\debug\$(TargetFramework)\LibC.dll" />
     </ItemGroup>
   </Target>
 
