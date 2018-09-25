@@ -156,28 +156,46 @@ which is weird because documentation says *.pdb files that are present in the sa
 More [here](https://docs.microsoft.com/en-us/visualstudio/debugger/specify-symbol-dot-pdb-and-source-files-in-the-visual-studio-debugger?view=vs-2017).
 
 7. Load pdb files manually (use option *Load Symbols* from the context menu in *Modules* view).
-![symbols loaded](\images\symbols-loaded.png)
+![symbols loaded](images/symbols-loaded.png)
 
 8. Run the app once again. Now if we will try enter to constructor *Class1LibA* (StepInto: F11) popup window will appear to point where is the cs file for this class. If we point the correct place with this source file we will be able enter into constructor and debug it.
 
-![popup](\images\popup.png)   
+![popup](images/popup.png)   
 
-![constructor](\images\constructor.png)
+![constructor](/images/constructor.png)
 
 #### Function Breakpoint
 Another option of debugging is usage of *Function Breakpoint...*
-![bp](\images\function-breakpoint.png).   
+![bp](images/function-breakpoint.png).   
 
 To use this option copy the function name in Object Browser and next pase it in the *Function Breakpoing...*.
 
-![copy](\images\copy.png).  
+![copy](images/copy.png).  
 
-![new-function-breakpoint](\images\new-function-breakpoint.png).  
+![new-function-breakpoint](images/new-function-breakpoint.png).  
 
 In this way we can start debugging pointed function.   
 
-![cget-name](\images\cget-name.png).  
+![cget-name](images/cget-name.png).  
 
 #### Object Browser - Go To Implementation
 At this moment I do not know how to get working this option...
-![ob-gti](\images\ob-go-to-impl.png).  
+![ob-gti](images/ob-go-to-impl.png).  
+
+#### DebugType embedded
+In case there is a need to embed pdb files inside dlls then can be used option *DebugType*
+
+```
+<DebugType>embedded</DebugType>
+```
+This option has to be used in every csproj that produces dll that goes into nuget package. When this option is used option
+*IncludeSymbols* should be removed from the csproj.
+
+```
+<IncludeSymbols>true</IncludeSymbols>
+```
+
+NOTE: I cannot find any official docs for the *embedded DebugType*. [Here](https://docs.microsoft.com/en-us/visualstudio/msbuild/common-msbuild-project-properties?view=vs-2017#list-of-common-properties-and-parameters) can be found some information but on the list of values for the *DebugType* are only *full*, *pdbonly*, and *none*.
+
+App that loads dlls with embedded symbols loads automatically the symbols.
+![load-embedded](images/load-embedded.png)
