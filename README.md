@@ -162,7 +162,7 @@ More [here](https://docs.microsoft.com/en-us/visualstudio/debugger/specify-symbo
 
 ![popup](images/popup.png)   
 
-![constructor](/images/constructor.png)
+![constructor](images/constructor.png)
 
 #### Function Breakpoint
 Another option of debugging is usage of *Function Breakpoint...*
