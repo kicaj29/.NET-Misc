@@ -47,5 +47,11 @@ namespace NETmisc
             string y1 = y ?? "abc";
             string z1 = z ?? "abc";
         }
+
+        private void btnTryCatchFinally_Click(object sender, EventArgs e)
+        {
+            var x = new TryCatchFinally();
+            x.Test();
+        }
     }
 }

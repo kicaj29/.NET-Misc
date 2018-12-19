@@ -43,6 +43,8 @@ For new csproj .nuspec file is not supported because nuget related data are avia
 #### Top-level dependencies
 *In NuGet 2, you listed every single package to be included. In NuGet 4 (VS 2017), you only need to list top-level dependencies. Everything else is that those top-level dependencies require will be imported automatically.*   
 **NOTE: the topic is about nuget dependencies and not dll references!!!**
+https://natemcmaster.com/blog/2017/03/09/vs2015-to-vs2017-upgrade/   
+
 
 https://docs.microsoft.com/en-us/dotnet/core/tools/csproj
 
