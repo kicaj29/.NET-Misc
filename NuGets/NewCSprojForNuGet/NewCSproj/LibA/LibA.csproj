@@ -5,13 +5,17 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <IncludeSymbols>true</IncludeSymbols>  
-    <PackageVersion>2.0.0-rc.5</PackageVersion>
+    <PackageVersion>4.0.0</PackageVersion>
     <TargetsForTfmSpecificBuildOutput>PackageAdditionalBuildOutput</TargetsForTfmSpecificBuildOutput>
     <TargetsForTfmSpecificContentInPackage>PackageAdditionalContent</TargetsForTfmSpecificContentInPackage>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference PrivateAssets="All" Include="..\LibB\LibB.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Label="ExternalReferences">
+    <PackageReference Include="LibD" Version="1.0.1" />
   </ItemGroup>
 
   <Target Name="PackageAdditionalBuildOutput">

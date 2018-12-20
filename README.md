@@ -54,6 +54,24 @@ It means that nuget A will have dependency to nuget B. In presented case there i
 ```
 <ProjectReference PrivateAssets="All" Include="..\LibB\LibB.csproj" />
 ```   
+#### ExternalReferences - nuget dependencies
+In case nuget package (LibA) contains dll (LibB.csproj) which has reference to dll from another package (LibD) **we have to add reference to nuget** LibD in LibA.csproj (root csproj for nuget LibA).   
+
+```
+  <ItemGroup Label="ExternalReferences">
+    <PackageReference Include="LibD" Version="1.0.1" />
+  </ItemGroup>
+```
+
+Also then in the client project we can see this nuget dependency in Solution Explorer.
+
+![nuget dependencies](images/nuget-dependencies.png)
+
+If the nuget reference is not added then client that uses nuget LibA will get an error.
+
+```
+System.IO.FileNotFoundException: 'Could not load file or assembly 'LibD, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. The system cannot find the file specified.'
+```
 #### TargetsForTfmSpecificBuildOutput
 To include in the nuget additionall dlls element *TargetsForTfmSpecificBuildOutput* has to be used.   
 

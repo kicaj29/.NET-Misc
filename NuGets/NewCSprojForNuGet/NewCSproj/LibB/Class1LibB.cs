@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using LibC;
+using LibD;
 
 namespace LibB
 {
@@ -12,7 +13,9 @@ namespace LibB
         public string GetName()
         {
             var x = new Class1LibC();
-            return "I am lib B; " + x.GetName();
+            var y = new Class1LibD();
+
+            return "I am lib B; " + x.GetName() + y.GetName();
         }
     }
 }

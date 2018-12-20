@@ -2,12 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>net461</TargetFramework>
-    <OutputType>Exe</OutputType>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <IncludeSymbols>true</IncludeSymbols>
+    <PackageVersion>1.0.1</PackageVersion>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="LibA" Version="4.0.0" />
-  </ItemGroup>
 
 </Project>
