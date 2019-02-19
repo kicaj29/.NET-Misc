@@ -59,12 +59,16 @@ namespace ExpressionTreesExamples
 
             // This expression tree can also be created manually like this:
 
+            // https://stackoverflow.com/questions/30556911/variable-of-type-referenced-from-scope-but-it-is-not-defined
+            // to refer to the same instance of the parameter we have to assign it to some variable first
+            var p = Expression.Parameter(typeof(int), "n");
+
             Expression<Predicate<int>> expressionByApi = Expression.Lambda<Predicate<int>>(
                 Expression.LessThan(
-                    Expression.Parameter(typeof(int), "n"),
+                    p,
                     Expression.Constant(3)
                 ),
-                Expression.Parameter(typeof(int), "n")
+                p
             );
 
             // Get a compiled version of the expression, wrapped in a delegate
