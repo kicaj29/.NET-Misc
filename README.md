@@ -219,3 +219,8 @@ NOTE: I cannot find any official docs for the *embedded DebugType*. [Here](https
 
 App that loads dlls with embedded symbols loads automatically the symbols.
 ![load-embedded](images/load-embedded.png)
+
+## Expression trees
+### Expression trees basics
+https://www.codeproject.com/Articles/17575/Lambda-Expressions-and-Expression-Trees-An-Introdu
+### Expression trees advanced

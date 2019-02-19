@@ -4,8 +4,8 @@
     <TargetFramework>net461</TargetFramework>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <IncludeSymbols>true</IncludeSymbols>  
-    <PackageVersion>4.0.0</PackageVersion>
+    <DebugType>embedded</DebugType>
+    <PackageVersion>5.0.0</PackageVersion>
     <TargetsForTfmSpecificBuildOutput>PackageAdditionalBuildOutput</TargetsForTfmSpecificBuildOutput>
     <TargetsForTfmSpecificContentInPackage>PackageAdditionalContent</TargetsForTfmSpecificContentInPackage>
   </PropertyGroup>
