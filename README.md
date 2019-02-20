@@ -223,4 +223,9 @@ App that loads dlls with embedded symbols loads automatically the symbols.
 ## Expression trees
 ### Expression trees basics
 https://www.codeproject.com/Articles/17575/Lambda-Expressions-and-Expression-Trees-An-Introdu
+
+*The C# compiler can generate expression trees only from expression lambdas (or single-line lambdas). It cannot parse statement lambdas (or multi-line lambdas).* More [here](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/expression-trees/#creating-expression-trees-from-lambda-expressions).   
+
+*Statement lambdas, like anonymous methods, cannot be used to create expression trees.* More [here](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/statements-expressions-operators/lambda-expressions#statement-lambdas)
 ### Expression trees advanced
+http://www.pashov.net/code/dynamic+filters
