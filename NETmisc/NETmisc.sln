@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThrowVsThrowEx", "ThrowVsTh
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CovarianceAndContravariance", "CovarianceAndContravariance\CovarianceAndContravariance.csproj", "{A9AEF194-1C0B-439D-A3DD-3CE3EAA623D6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dynamicVSvarVSobject", "dynamicVSvar\dynamicVSvarVSobject.csproj", "{9AB3A967-6462-4EA3-8421-701DACA4F7A4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{A9AEF194-1C0B-439D-A3DD-3CE3EAA623D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9AEF194-1C0B-439D-A3DD-3CE3EAA623D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A9AEF194-1C0B-439D-A3DD-3CE3EAA623D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AB3A967-6462-4EA3-8421-701DACA4F7A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AB3A967-6462-4EA3-8421-701DACA4F7A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AB3A967-6462-4EA3-8421-701DACA4F7A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AB3A967-6462-4EA3-8421-701DACA4F7A4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

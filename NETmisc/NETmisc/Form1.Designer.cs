@@ -32,6 +32,7 @@
             this.btnCovarianceAndContravariance = new System.Windows.Forms.Button();
             this.btnDoubleQuestionMark = new System.Windows.Forms.Button();
             this.btnTryCatchFinally = new System.Windows.Forms.Button();
+            this.btnDynamicVarObject = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnThrowVsThrowEx
@@ -74,11 +75,22 @@
             this.btnTryCatchFinally.UseVisualStyleBackColor = true;
             this.btnTryCatchFinally.Click += new System.EventHandler(this.btnTryCatchFinally_Click);
             // 
+            // btnDynamicVarObject
+            // 
+            this.btnDynamicVarObject.Location = new System.Drawing.Point(230, 69);
+            this.btnDynamicVarObject.Name = "btnDynamicVarObject";
+            this.btnDynamicVarObject.Size = new System.Drawing.Size(189, 23);
+            this.btnDynamicVarObject.TabIndex = 4;
+            this.btnDynamicVarObject.Text = "DynamicVarObject";
+            this.btnDynamicVarObject.UseVisualStyleBackColor = true;
+            this.btnDynamicVarObject.Click += new System.EventHandler(this.btnDynamicVarObject_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(431, 351);
+            this.Controls.Add(this.btnDynamicVarObject);
             this.Controls.Add(this.btnTryCatchFinally);
             this.Controls.Add(this.btnDoubleQuestionMark);
             this.Controls.Add(this.btnCovarianceAndContravariance);
@@ -95,6 +107,7 @@
         private System.Windows.Forms.Button btnCovarianceAndContravariance;
         private System.Windows.Forms.Button btnDoubleQuestionMark;
         private System.Windows.Forms.Button btnTryCatchFinally;
+        private System.Windows.Forms.Button btnDynamicVarObject;
     }
 }
 

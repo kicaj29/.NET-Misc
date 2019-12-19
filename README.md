@@ -229,3 +229,6 @@ https://www.codeproject.com/Articles/17575/Lambda-Expressions-and-Expression-Tre
 *Statement lambdas, like anonymous methods, cannot be used to create expression trees.* More [here](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/statements-expressions-operators/lambda-expressions#statement-lambdas)
 ### Expression trees advanced
 http://www.pashov.net/code/dynamic+filters
+
+## ConsoleAppConfigFile
+If we have some dll that has own App.config then the app setting key has to be added to the App.config from the exe/main csproj to access in runtime value of this key.

@@ -53,5 +53,10 @@ namespace NETmisc
             var x = new TryCatchFinally();
             x.Test();
         }
+
+        private void btnDynamicVarObject_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
