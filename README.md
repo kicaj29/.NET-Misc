@@ -232,3 +232,17 @@ http://www.pashov.net/code/dynamic+filters
 
 ## ConsoleAppConfigFile
 If we have some dll that has own App.config then the app setting key has to be added to the App.config from the exe/main csproj to access in runtime value of this key.
+
+## var vs dynamic vs object
+https://www.c-sharpcorner.com/UploadFile/b1df45/var-vs-dynamic-keywords-in-C-Sharp/   
+https://www.c-sharpcorner.com/UploadFile/rohatash/difference-between-object-and-dynamic-keyword-in-C-Sharp/   
+https://docs.microsoft.com/en-us/archive/blogs/csharpfaq/what-is-the-difference-between-dynamic-and-object-keywords
+
+## boxing and unboxing
+https://gurunguns.wordpress.com/2012/10/14/stack-heap-value-types-reference-types-boxing-and-unboxing/   
+   
+
+
+>BOXING: When we move data from Value type to Reference type, data is moved from Stack to Heap. It is termed as Boxing.
+
+>UNBOXING: When we move data from Reference type to Value type, data is moved from Heap to stack. It is termed as Unboxing

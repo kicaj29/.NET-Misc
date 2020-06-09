@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ThrowVsThrowEx;
+using dynamicVSvarVSobject;
 
 namespace NETmisc
 {
@@ -56,7 +57,8 @@ namespace NETmisc
 
         private void btnDynamicVarObject_Click(object sender, EventArgs e)
         {
-
+            // DynamicVarObject.Go();
+            DynamicVarObject.ObjectVsDynamic();
         }
     }
 }
