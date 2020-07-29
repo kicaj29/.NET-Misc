@@ -38,14 +38,23 @@ namespace server
             });*/
 
 
-            services.AddCors(options => {
+            /*services.AddCors(options => {
                 options.AddPolicy("default",
                     builder => {
                         builder.WithOrigins("http://localhost:5500")
                         .AllowAnyHeader()
                         .AllowAnyMethod();
                     });
+            });*/
+
+            services.AddCors(options => {
+                options.AddPolicy("default",
+                builder => {
+                    builder.WithOrigins("*")
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
             });
+});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
