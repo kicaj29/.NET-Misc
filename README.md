@@ -246,3 +246,8 @@ https://gurunguns.wordpress.com/2012/10/14/stack-heap-value-types-reference-type
 >BOXING: When we move data from Value type to Reference type, data is moved from Stack to Heap. It is termed as Boxing.
 
 >UNBOXING: When we move data from Reference type to Value type, data is moved from Heap to stack. It is termed as Unboxing
+
+## CORS
+Run server and client to see how to enable/disable/control CORS.
+
+CORS: includes protocol, domain, port. http://localhost:5500 is not equal to http://127.0.0.1:5500

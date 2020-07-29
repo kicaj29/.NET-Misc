@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>        
+    </head>
+    <script type="text/javascript">
+        function getData() {
+            console.log("starting fetching...");
+            fetch("https://localhost:44343/weatherforecast", { method: "get"})
+                .then(res => res.json())
+                .then(data => console.log(data));
+        }
+    </script>
+    <body>
+        <button onclick='getData();'>Test CORS</button>
+    </body>
+</html>
