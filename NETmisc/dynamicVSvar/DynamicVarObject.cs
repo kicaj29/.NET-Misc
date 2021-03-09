@@ -5,6 +5,46 @@ namespace dynamicVSvarVSobject
 {
     public class DynamicVarObject
     {
+        public static object returnObject()
+        {
+            object o = "123";
+            return o;
+        }
+
+        /*public static var returnVar()
+        {
+            var s = "abc";
+            return s;
+        }*/
+
+        public static string returnString()
+        {
+            var s = "abc";
+            return s;
+        }
+
+        public static dynamic returnDynamic(dynamic x)
+        {
+            if (x)
+            {
+                dynamic val1 = new
+                {
+                    Name = "Jacek",
+                    Age = 21
+                };
+                return val1;
+            }
+            else
+            {
+                dynamic val2 = new
+                {
+                    Gender = "male",
+                    Salary = 2000
+                };
+                return val2;
+            }
+        }
+
         public static void Go()
         {
             
@@ -18,16 +58,24 @@ namespace dynamicVSvarVSobject
             d = "aaa";
 
             object o = 999;
-            o = "999";
+            o = "aaa";
 
             //2. Intellisense works for var, does not work for dynamic, for object we can see only basic things from object type
+
+            dynamic address = new
+            {
+                City = "Katowice",
+                Street = "Mikolowska"
+            };
+            
+            
 
             //3. dynamic variables can be used to create properties and return values from a function.
             //   var variables cannot be used for property or return values from a function. They can only be used as local variable in a function.
             //   object can be used everywhere.
 
             //4. object types increase the overhead of boxing and un-boxing, before we can use the actual values stored in it.
-            //   it is not the case for vat.
+            //   it is not the case for var.
 
             int i4 = 1;
             object o4 = i4;     //boxing
@@ -61,8 +109,22 @@ namespace dynamicVSvarVSobject
 
         }
 
+        private static void TestTypes()
+        {
+            dynamic dyn = 1;
+            object obj = 1;
+
+            Debug.WriteLine((string)dyn.GetType().Name);    // prints Int32
+            Debug.WriteLine(obj.GetType().Name);            // prints Int32  
+
+            dyn = dyn + 3;                                  // 4
+            // obj = obj + 3; // compilation error
+        }
+
         public static void ObjectVsDynamic()
         {
+            TestTypes();
+
             // dynamic correctly handles calling overloaded methods!
             // but it does not work if Test method is conditional! why -> https://stackoverflow.com/questions/28562834/why-cannot-i-use-debug-assert-with-a-method-accepting-dynamic-and-returning-bo
             dynamic w = 1;

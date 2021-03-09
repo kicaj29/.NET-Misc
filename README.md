@@ -27,6 +27,7 @@
 - [var vs dynamic vs object](#var-vs-dynamic-vs-object)
 - [boxing and unboxing](#boxing-and-unboxing)
 - [CORS](#cors)
+- [Anonymous Types](#anonymous-types)
 
 # Throw vs ThrowEx
 throw ex - shorter stack trace   
@@ -263,7 +264,129 @@ If we have some dll that has own App.config then the app setting key has to be a
 # var vs dynamic vs object
 https://www.c-sharpcorner.com/UploadFile/b1df45/var-vs-dynamic-keywords-in-C-Sharp/   
 https://www.c-sharpcorner.com/UploadFile/rohatash/difference-between-object-and-dynamic-keyword-in-C-Sharp/   
-https://docs.microsoft.com/en-us/archive/blogs/csharpfaq/what-is-the-difference-between-dynamic-and-object-keywords
+https://docs.microsoft.com/en-us/archive/blogs/csharpfaq/what-is-the-difference-between-dynamic-and-object-keywords   
+https://devblogs.microsoft.com/visualstudio/what-is-the-difference-between-dynamic-and-object-keywords/
+https://code-maze.com/advanced-csharp-dynamic-type/
+
+
+* change value after assignment
+  * object: possible
+    ```
+      object o = 999;
+      o = "aaa";
+    ```
+  * var: not possible
+    ```
+      var i = 999;
+      i = "aaaa"; //compilation error!!!
+    ```
+
+  * dynamic: possible
+    ```
+    dynamic d = 999;
+    d = "aaa";
+    ```
+* intellisense
+  * object: available for methods from ```class Object```
+  * var: available for the used type
+  * dynamic: not available (but dynamic works with anonymous types)
+    ```
+      dynamic address = new
+      {
+          City = "Katowice",
+          Street = "Mikolowska"
+      };
+    ```
+    If we type ```address.``` then nothing appears in the intellisense
+* value returned by a function
+  * object: object can be used to return value and also can be a parameter
+    ```
+    public static object returnObject()
+    {
+        object o = "123";
+        return o;
+    }  
+    ```
+  * var: var cannot be used as returned typed and also cannot be used are parameter. Only local usage is possible.  
+    The following code will not compile:
+    ```
+    public static var returnVar()
+    {
+        var s = "abc";
+        return s;
+    }
+    ```
+    But this is ok:
+    ```
+    public static string returnString()
+    {
+        var s = "abc";
+        return s;
+    }    
+    ```
+  * dynamic: can be used are returned type and as parameters also
+    ```
+    public static dynamic returnDynamic(dynamic x)
+    {
+        if (x)
+        {
+            dynamic val1 = new
+            {
+                Name = "Jacek",
+                Age = 21
+            };
+            return val1;
+        }
+        else
+        {
+            dynamic val2 = new
+            {
+                Gender = "male",
+                Salary = 2000
+            };
+            return val2;
+        }
+    }    
+    ```
+  * used as property/field type
+    * object: possible
+    * var: not possible
+    * dynamic: possible
+  ```
+  public class SimpleClass
+  {
+      object FieldObject;
+      // var FieldVar; // will not compile
+      dynamic FieldDynamic;
+
+      object PropertyObject { get; set; }
+      // var PropertyVar { get; set; } // will not compile
+      dynamic PropertyDynamic { get; set; }
+  }
+  ```
+* dynamic vs object
+  > ["As part of the process, variables of type dynamic are compiled into variables of type object. Therefore, type __dynamic exists only at compile time, not at run time__."](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/reference-types)
+  ```
+  dynamic dyn = 1;
+  object obj = 1;
+
+  Debug.WriteLine((string)dyn.GetType().Name);    // prints Int32
+  Debug.WriteLine(obj.GetType().Name);            // prints Int32  
+
+  dyn = dyn + 3;                                  // 4
+  // obj = obj + 3; // compilation error  
+  ```
+* when to use dynamic
+  * if we have to multiple times cast object (or another type) then to write less lines of code we can use dynamic
+  * communicating with other dynamic languages
+  * simplifying responses from API calls when we don’t know what type of object to expect (or we don’t care)
+  * creating libraries that can be used between languages
+  * making generic solutions when speed isn’t the main concern
+  * replacing and simplifying reflection code
+* Why we shouldn’t use dynamic all the time because:
+  * It’s slower than statically typed code
+  * Increases a chance to get runtime exceptions
+  * Decreases code readability in some cases, and working with it is a bit harder due to the lack of IntelliSense
 
 # boxing and unboxing
 https://gurunguns.wordpress.com/2012/10/14/stack-heap-value-types-reference-types-boxing-and-unboxing/   
@@ -278,3 +401,13 @@ https://gurunguns.wordpress.com/2012/10/14/stack-heap-value-types-reference-type
 Run server and client to see how to enable/disable/control CORS.
 
 CORS: includes protocol, domain, port. http://localhost:5500 is not equal to http://127.0.0.1:5500
+
+# Anonymous Types
+https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/anonymous-types   
+
+>"Anonymous types provide a convenient way to encapsulate a set of read-only properties into a single object without having to explicitly define a type first."
+
+* Can we add a method to an anonymous type: NO
+https://stackoverflow.com/questions/24770648/can-we-add-a-method-to-an-anonymous-type-that-refers-to-the-anonymous-types-mem
+>"The reason is that anonymous types are intended to be transient so that you can deal with the results of projections in a concise manner, without having to create an explicit type to hold the results of transforming and projecting a set of data"
+
