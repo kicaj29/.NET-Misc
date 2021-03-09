@@ -1,46 +1,73 @@
-# .NET-Misc
-Different small examples
+- [Throw vs ThrowEx](#throw-vs-throwex)
+- [CovarianceAndContravariance](#covarianceandcontravariance)
+- [??](#)
+- [Old csproj vs new csproj](#old-csproj-vs-new-csproj)
+  - [OldCSproj](#oldcsproj)
+  - [NewCSproj](#newcsproj)
+  - [CSProjDotNetStandardAndConsolAppCore](#csprojdotnetstandardandconsolappcore)
+- [NuGets](#nugets)
+  - [NuGets for .NET Framework old csproj](#nugets-for-net-framework-old-csproj)
+  - [NuGets for .NET Framework new csproj](#nugets-for-net-framework-new-csproj)
+    - [Top-level dependencies](#top-level-dependencies)
+    - [PrivateAssets](#privateassets)
+    - [ExternalReferences - nuget dependencies](#externalreferences---nuget-dependencies)
+    - [TargetsForTfmSpecificBuildOutput](#targetsfortfmspecificbuildoutput)
+    - [TargetsForTfmSpecificContentInPackage](#targetsfortfmspecificcontentinpackage)
+  - [Use nuget that contains *dacpacs*](#use-nuget-that-contains-dacpacs)
+  - [Floating versioning](#floating-versioning)
+  - [Debugging](#debugging)
+    - [Simulation of not loading pdb files for locally compiled dlls](#simulation-of-not-loading-pdb-files-for-locally-compiled-dlls)
+    - [Function Breakpoint](#function-breakpoint)
+    - [Object Browser - Go To Implementation](#object-browser---go-to-implementation)
+    - [DebugType embedded](#debugtype-embedded)
+- [Expression trees](#expression-trees)
+  - [Expression trees basics](#expression-trees-basics)
+    - [Expression trees advanced](#expression-trees-advanced)
+- [ConsoleAppConfigFile](#consoleappconfigfile)
+- [var vs dynamic vs object](#var-vs-dynamic-vs-object)
+- [boxing and unboxing](#boxing-and-unboxing)
+- [CORS](#cors)
 
-## Throw vs ThrowEx
+# Throw vs ThrowEx
 throw ex - shorter stack trace   
 throw - full stack trace
 
-## CovarianceAndContravariance
+# CovarianceAndContravariance
 https://stackoverflow.com/questions/2662369/covariance-and-contravariance-real-world-example   
 https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/covariance-contravariance/index   
 For example since .net 4.0 IEnumerable is Covariant!!! Using out/in you can define own types
 that are covariant (casting up) or contravariant (casting down).
 
-## ??
+# ??
 ?? reacts only on null value, string.Empty is treated as not null value
 
-## Old csproj vs new csproj
+# Old csproj vs new csproj
 https://natemcmaster.com/blog/2017/03/09/vs2015-to-vs2017-upgrade/   
 
-### OldCSproj
+## OldCSproj
 This is just simple .NET Framework project in .NET 4.6.1.   
 
-### NewCSproj
+## NewCSproj
 This is project converter from OldCSproj where csproj files have been refactored to new csproj format.  
 
 Notes:
 * in new csproj AssemblyInfo.cs file is automatically generated and it is stored only in memory. Because in old csproj AssemblyInfo.cs was stored on disk the compiler sees 2 duplicated files and returns 7 errors. There are 2 options to solve it: remove the AssemblyInfo.cs from the disk or use *<GenerateAssemblyInfo>false</GenerateAssemblyInfo>* in the csproj file. More can be found [here](https://stackoverflow.com/questions/42138418/equivalent-to-assemblyinfo-in-dotnet-core-csproj).
 * it looks that at least in case of console app if new csproj file is used it has to be used in all referenced projects. If some projects use old csproj there are errors during compilation.
 
-### CSProjDotNetStandardAndConsolAppCore
+## CSProjDotNetStandardAndConsolAppCore
 This is project created for .NET Core 2.0 and libs are in .NET Standard 2.0.
 
-## NuGets
-### NuGets for .NET Framework old csproj
+# NuGets
+## NuGets for .NET Framework old csproj
 Folders: NuGetNETFramework, NuGetNETFrameworkRun.   
 For old csproj .nuspec file is required.   
 https://www.codeproject.com/Articles/1214420/Creating-a-Nuget-Package-Step-by-Step   
 https://dotnetcore.gaprogman.com/2018/04/26/how-to-create-nuget-packages/   
-### NuGets for .NET Framework new csproj
+## NuGets for .NET Framework new csproj
 Folder: NewCSproj.   
 For new csproj .nuspec file is not supported because nuget related data are avialble in csproj files.   
 
-#### Top-level dependencies
+### Top-level dependencies
 *In NuGet 2, you listed every single package to be included. In NuGet 4 (VS 2017), you only need to list top-level dependencies. Everything else is that those top-level dependencies require will be imported automatically.*   
 **NOTE: the topic is about nuget dependencies and not dll references!!!**
 https://natemcmaster.com/blog/2017/03/09/vs2015-to-vs2017-upgrade/   
@@ -48,13 +75,13 @@ https://natemcmaster.com/blog/2017/03/09/vs2015-to-vs2017-upgrade/
 
 https://docs.microsoft.com/en-us/dotnet/core/tools/csproj
 
-#### PrivateAssets
+### PrivateAssets
 By default all referenced csproj are treated as nuget dependency.
 It means that nuget A will have dependency to nuget B. In presented case there is only one nuget that contains dlls A, B, C so to not create nuget dependency to not existing nuget B tag *PrivateAssets* has to be used.   
 ```
 <ProjectReference PrivateAssets="All" Include="..\LibB\LibB.csproj" />
 ```   
-#### ExternalReferences - nuget dependencies
+### ExternalReferences - nuget dependencies
 In case nuget package (LibA) contains dll (LibB.csproj) which has reference to dll from another package (LibD) **we have to add reference to nuget** LibD in LibA.csproj (root csproj for nuget LibA).   
 
 ```
@@ -72,7 +99,7 @@ If the nuget reference is not added then client that uses nuget LibA will get an
 ```
 System.IO.FileNotFoundException: 'Could not load file or assembly 'LibD, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. The system cannot find the file specified.'
 ```
-#### TargetsForTfmSpecificBuildOutput
+### TargetsForTfmSpecificBuildOutput
 To include in the nuget additionall dlls element *TargetsForTfmSpecificBuildOutput* has to be used.   
 
 NOTE: this tag is needed even *csproj* references are used! It means that if *csproj* A has reference to *csproj* B to have dll B for the nuget A it has to explicit added via *TargetsForTfmSpecificBuildOutput*.
@@ -90,21 +117,21 @@ NOTE: this tag is needed even *csproj* references are used! It means that if *cs
   </Target>
 ```
 
-#### TargetsForTfmSpecificContentInPackage
+### TargetsForTfmSpecificContentInPackage
 This element allows to add any other files that should be placed in the nuget. It can be used e.g. to include *dacpac* files.
 
-### Use nuget that contains *dacpacs*
+## Use nuget that contains *dacpacs*
 Because after adding dependency to a nuget that contains *dacpac* files the files are not automatically added to the current solution/project it has to be done manually or by some script. *Dacpac* files have to be uncpack from the nuget and copied to some folder in the current solution/project.   
 
 In *UseNuGet.sln* was created folder *NugetContent* for stuff like *dacpac* files. In this case it was copied manually. Next this *dacpac* can be referenced by other *sqlproj* files from the current solution.   
 
 NOTE: remember about handling an issue with not executing pre-deployment and pos-deployment scripts from the referenced *dacpac* files (also from the referenced *sqlproj* files). More info about it can be found in the [sql repo](https://github.com/kicaj29/sql#how-to-reference-between-sqlproj-files).   
-### Floating versioning
+## Floating versioning
 [Docs](https://docs.microsoft.com/en-us/nuget/consume-packages/dependency-resolution#floating-versions).   
 
 [Docs2](https://docs.microsoft.com/en-us/nuget/reference/package-versioning#version-ranges-and-wildcards).
 
-### Debugging
+## Debugging
 To debug selected dll we have to make sure that pdb (symbols) file of the selected dll is loaded in run-time.   
 
 [Where does the debugger search for symbol files?](https://docs.microsoft.com/en-us/visualstudio/debugger/specify-symbol-dot-pdb-and-source-files-in-the-visual-studio-debugger?view=vs-2017#BKMK_Find_symbol___pdb__files)   
@@ -162,7 +189,7 @@ NOTE: like mentioned in the above link the .pdb file also contains path to the l
 </Pdb>
 ```
 
-#### Simulation of not loading pdb files for locally compiled dlls
+### Simulation of not loading pdb files for locally compiled dlls
 1. Rename folder with sources of the dlls that will be included in the nuget package to some temp name e.g. *NewCSproj_tempName*.
 2. Build the dlls and create nuget package. Pdb files will have path that has in name *NewCSproj_tempName*.
 3. Place the nuget package to some local folder.
@@ -184,11 +211,11 @@ More [here](https://docs.microsoft.com/en-us/visualstudio/debugger/specify-symbo
 
 ![constructor](images/constructor.png)
 
-#### Function Breakpoint
+### Function Breakpoint
 Another option of debugging is usage of *Function Breakpoint...*
 ![bp](images/function-breakpoint.png).   
 
-To use this option copy the function name in Object Browser and next pase it in the *Function Breakpoing...*.
+To use this option copy the function name in Object Browser and next pase it in the *Function Breakpoint...*.
 
 ![copy](images/copy.png).  
 
@@ -198,11 +225,11 @@ In this way we can start debugging pointed function.
 
 ![cget-name](images/cget-name.png).  
 
-#### Object Browser - Go To Implementation
+### Object Browser - Go To Implementation
 At this moment I do not know how to get working this option...
 ![ob-gti](images/ob-go-to-impl.png).  
 
-#### DebugType embedded
+### DebugType embedded
 In case there is a need to embed pdb files inside dlls then can be used option *DebugType*
 
 ```
@@ -220,8 +247,8 @@ NOTE: I cannot find any official docs for the *embedded DebugType*. [Here](https
 App that loads dlls with embedded symbols loads automatically the symbols.
 ![load-embedded](images/load-embedded.png)
 
-## Expression trees
-### Expression trees basics
+# Expression trees
+## Expression trees basics
 https://www.codeproject.com/Articles/17575/Lambda-Expressions-and-Expression-Trees-An-Introdu
 
 *The C# compiler can generate expression trees only from expression lambdas (or single-line lambdas). It cannot parse statement lambdas (or multi-line lambdas).* More [here](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/expression-trees/#creating-expression-trees-from-lambda-expressions).   
@@ -230,15 +257,15 @@ https://www.codeproject.com/Articles/17575/Lambda-Expressions-and-Expression-Tre
 ### Expression trees advanced
 http://www.pashov.net/code/dynamic+filters
 
-## ConsoleAppConfigFile
+# ConsoleAppConfigFile
 If we have some dll that has own App.config then the app setting key has to be added to the App.config from the exe/main csproj to access in runtime value of this key.
 
-## var vs dynamic vs object
+# var vs dynamic vs object
 https://www.c-sharpcorner.com/UploadFile/b1df45/var-vs-dynamic-keywords-in-C-Sharp/   
 https://www.c-sharpcorner.com/UploadFile/rohatash/difference-between-object-and-dynamic-keyword-in-C-Sharp/   
 https://docs.microsoft.com/en-us/archive/blogs/csharpfaq/what-is-the-difference-between-dynamic-and-object-keywords
 
-## boxing and unboxing
+# boxing and unboxing
 https://gurunguns.wordpress.com/2012/10/14/stack-heap-value-types-reference-types-boxing-and-unboxing/   
    
 
@@ -247,7 +274,7 @@ https://gurunguns.wordpress.com/2012/10/14/stack-heap-value-types-reference-type
 
 >UNBOXING: When we move data from Reference type to Value type, data is moved from Heap to stack. It is termed as Unboxing
 
-## CORS
+# CORS
 Run server and client to see how to enable/disable/control CORS.
 
 CORS: includes protocol, domain, port. http://localhost:5500 is not equal to http://127.0.0.1:5500
