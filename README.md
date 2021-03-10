@@ -28,6 +28,8 @@
 - [boxing and unboxing](#boxing-and-unboxing)
 - [CORS](#cors)
 - [Anonymous Types](#anonymous-types)
+- [Discards](#discards)
+- [Deconstruct](#deconstruct)
 
 # Throw vs ThrowEx
 throw ex - shorter stack trace   
@@ -410,4 +412,24 @@ https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-str
 * Can we add a method to an anonymous type: NO
 https://stackoverflow.com/questions/24770648/can-we-add-a-method-to-an-anonymous-type-that-refers-to-the-anonymous-types-mem
 >"The reason is that anonymous types are intended to be transient so that you can deal with the results of projections in a concise manner, without having to create an explicit type to hold the results of transforming and projecting a set of data"
+
+# Discards
+
+https://docs.microsoft.com/en-us/dotnet/csharp/discards
+
+> "Starting with C# 7.0, C# supports discards, which are placeholder variables that are intentionally unused in application code. Discards are equivalent to unassigned variables; they don't have a value. A discard communicates intent to the compiler and others that read your code: You intended to ignore the result of an expression. You may want to ignore the result of an expression, one or more members of a tuple expression, an out parameter to a method, or the target of a pattern matching expression."
+
+[discards-example](./discards)
+
+# Deconstruct
+
+> "C# does not offer built-in support for deconstructing non-tuple types. However, as the author of a class, a struct, or an interface, you can allow instances of the type to be deconstructed by implementing one or more Deconstruct methods. The method returns void, and each value to be deconstructed is indicated by an out parameter in the method signature. For example, the following Deconstruct method of a Person class returns the first, middle, and last name"
+
+```c#
+public void Deconstruct(out string fname, out string mname, out string lname)
+```
+
+[deconstruct-example](./Discards/Discards/Person.cs#L28)
+
+https://docs.microsoft.com/en-us/dotnet/csharp/deconstruct#deconstructing-user-defined-types
 
