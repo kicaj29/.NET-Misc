@@ -419,7 +419,7 @@ https://docs.microsoft.com/en-us/dotnet/csharp/discards
 
 > "Starting with C# 7.0, C# supports discards, which are placeholder variables that are intentionally unused in application code. Discards are equivalent to unassigned variables; they don't have a value. A discard communicates intent to the compiler and others that read your code: You intended to ignore the result of an expression. You may want to ignore the result of an expression, one or more members of a tuple expression, an out parameter to a method, or the target of a pattern matching expression."
 
-[discards-example](./discards)
+[discards-example](./Discards)
 
 # Deconstruct
 
