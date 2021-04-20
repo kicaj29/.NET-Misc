@@ -30,6 +30,7 @@
 - [Anonymous Types](#anonymous-types)
 - [Discards](#discards)
 - [Deconstruct](#deconstruct)
+- [CultureInfoExamples](#cultureinfoexamples)
 
 # Throw vs ThrowEx
 throw ex - shorter stack trace   
@@ -433,3 +434,13 @@ public void Deconstruct(out string fname, out string mname, out string lname)
 
 https://docs.microsoft.com/en-us/dotnet/csharp/deconstruct#deconstructing-user-defined-types
 
+
+# CultureInfoExamples
+
+[CultureInfoExamples](./CultureInfoExamples)
+
+https://docs.microsoft.com/en-us/previous-versions/dotnet/articles/ms994325(v=msdn.10)?redirectedfrom=MSDN#the-turkish-example
+https://stackoverflow.com/questions/3550213/in-c-sharp-what-is-the-difference-between-toupper-and-toupperinvariant
+
+![culture_info_upper_case.png](./images/culture_info_upper_case.png)   
+>NOTE: to see a difference on the screen a font that properly renders these characters must be used! That`s why the same example is rendered differently on Console and WinForms apps because they use different fonts!
