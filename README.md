@@ -20,6 +20,7 @@
     - [Function Breakpoint](#function-breakpoint)
     - [Object Browser - Go To Implementation](#object-browser---go-to-implementation)
     - [DebugType embedded](#debugtype-embedded)
+  - [Managing Package Versions Centrally](#managing-package-versions-centrally)
 - [Expression trees](#expression-trees)
   - [Expression trees basics](#expression-trees-basics)
     - [Expression trees advanced](#expression-trees-advanced)
@@ -250,6 +251,36 @@ NOTE: I cannot find any official docs for the *embedded DebugType*. [Here](https
 
 App that loads dlls with embedded symbols loads automatically the symbols.
 ![load-embedded](images/load-embedded.png)
+
+## Managing Package Versions Centrally
+
+Create projects:
+```
+dotnet new sln -n CentralNuGets
+dotnet new console -o myapp
+dotnet new classlib -o mylib1
+dotnet new classlib -o mylib2
+dotnet sln CentralNuGets.sln add mylib1\mylib1.csproj
+dotnet sln CentralNuGets.sln add mylib2\mylib2.csproj
+```
+
+Add sample references to nugets:
+```
+dotnet add mylib1/mylib1.csproj package Newtonsoft.Json -v 13.0.1
+dotnet add mylib2/mylib2.csproj package Newtonsoft.Json -v 13.0.0
+```
+
+Add references to projects:
+```
+dotnet add myapp/myapp.csproj reference mylib1\mylib1.csproj mylib2\mylib2.csproj
+```
+
+[Managing Package Versions Centrally](./NuGets/ManagingPackageVersionsCentrally)
+
+Links:   
+https://docs.microsoft.com/en-us/visualstudio/msbuild/customize-your-build?view=vs-2019   
+http://code.fitness/post/2018/03/directory-build-props.html   
+https://www.codementor.io/@rowlandbanks/lets-fix-your-c-project-structure-13om1krhqz   
 
 # Expression trees
 ## Expression trees basics
