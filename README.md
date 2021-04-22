@@ -293,7 +293,7 @@ We can see that there is conflict between version 13.0.1 and 13.0.0.
 
     IT LOOKS THAT IN THIS FILE WE CANNOT PLAY WITH NUGET PACKAGES!
 
-  * [Directory.Build.targets](./ManagingPackageVersionsCentrally/Use-Directory.Build.targets/Directory.Build.targets)
+  * [Directory.Build.targets](./NuGets/ManagingPackageVersionsCentrally/Use-Directory.Build.targets/Directory.Build.targets)
   
     "Directory.Build.targets is imported from Microsoft.Common.targets after importing .targets files from NuGet packages. So, **it can override** properties and targets defined in most of the build logic, or set properties for all your projects regardless of what the individual projects set."   
 
