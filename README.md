@@ -283,10 +283,33 @@ We can see that there is conflict between version 13.0.1 and 13.0.0.
 
 * It is better to define version of packages centrally to do not have such issues:
 
-Create a new file called ```Directory.Build.targets``` and define there references to nuget packages and its version. From ```csproj``` files remove version, only nuget name should be there.
+  There are 2 types of files used by MSbuild:
 
-After this change we can see that in both projects (libs) the same version of nuget is used:   
-![central-nugets.png](./images/central-nugets.png)
+  * Directory.Build.props   
+  
+    "Properties that are set in Directory.Build.props **can be overridden** elsewhere in the project file or in imported files, so you should think of the settings in Directory.Build.props as **specifying the defaults** for your projects."   
+
+    .props files are imported early in the import order.
+
+    IT LOOKS THAT IN THIS FILE WE CANNOT PLAY WITH NUGET PACKAGES!
+
+  * Directory.Build.targets
+  
+    "Directory.Build.targets is imported from Microsoft.Common.targets after importing .targets files from NuGet packages. So, **it can override** properties and targets defined in most of the build logic, or set properties for all your projects regardless of what the individual projects set."   
+
+    .targets files are imported late in the build order.
+
+    Create a new file called ```Directory.Build.targets``` and define there references to nuget packages and its version. From ```csproj``` files remove version, only nuget name should be there.
+
+    NOTE: if we want have a nuget package in all projects from solution then use **Include** attribute - then there is no need to specify this package at all in csproj files!
+
+    After this change we can see that in both projects (libs) the same version of nuget is used:   
+    ![central-nugets.png](./images/central-nugets.png)
+
+  Additional to these 2 files there is file ```Directory.Packages.props``` that is managed by nuget and it also can be used to manage packages centrally.
+
+  SUMMARY: I think it is better to use ```Directory.Build.targets``` instead of ```Directory.Packages.props``` because ```Directory.Build.targets``` can add a nuget package to all csprojs in solution without a need to update these csprojs while ```Directory.Packages.props``` requires entry in every csproj.
+
 
 [Managing Package Versions Centrally](./NuGets/ManagingPackageVersionsCentrally)
 
@@ -296,6 +319,9 @@ https://stu.dev/managing-package-versions-centrally/
 http://code.fitness/post/2018/03/directory-build-props.html   
 https://www.codementor.io/@rowlandbanks/lets-fix-your-c-project-structure-13om1krhqz   
 https://www.youtube.com/watch?v=GolKKJmqxoc   
+https://www.mytechramblings.com/posts/centrally-manage-nuget-versions   
+https://docs.microsoft.com/en-us/dotnet/core/compatibility/msbuild/5.0/directory-packages-props-imported-by-default   
+https://github.com/NuGet/Home/wiki/Centrally-managing-NuGet-package-versions   
 
 # Expression trees
 ## Expression trees basics

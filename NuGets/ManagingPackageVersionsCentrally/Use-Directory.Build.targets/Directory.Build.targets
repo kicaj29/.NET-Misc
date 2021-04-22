@@ -1,0 +1,9 @@
+<Project>
+	<ItemGroup>
+		<PackageReference Update="Newtonsoft.Json" Version="12.0.3" />
+		<PackageReference Include="Microsoft.CodeAnalysis" Version="3.4.0" />
+	</ItemGroup>
+	<PropertyGroup>
+		<Product>I am overriding product name from props!</Product>
+	</PropertyGroup>
+</Project>
