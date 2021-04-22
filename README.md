@@ -254,7 +254,7 @@ App that loads dlls with embedded symbols loads automatically the symbols.
 
 ## Managing Package Versions Centrally
 
-Create projects:
+* Create projects:
 ```
 dotnet new sln -n CentralNuGets
 dotnet new console -o myapp
@@ -264,23 +264,38 @@ dotnet sln CentralNuGets.sln add mylib1\mylib1.csproj
 dotnet sln CentralNuGets.sln add mylib2\mylib2.csproj
 ```
 
-Add sample references to nugets:
+* Add sample references to nugets:
 ```
 dotnet add mylib1/mylib1.csproj package Newtonsoft.Json -v 13.0.1
 dotnet add mylib2/mylib2.csproj package Newtonsoft.Json -v 13.0.0
 ```
 
-Add references to projects:
+* Add references to projects:
 ```
 dotnet add myapp/myapp.csproj reference mylib1\mylib1.csproj mylib2\mylib2.csproj
 ```
+
+* Open VS:
+
+We can see that there is conflict between version 13.0.1 and 13.0.0.
+
+![conflicting-nuget-versions.png](./images/conflicting-nuget-versions.png)
+
+* It is better to define version of packages centrally to do not have such issues:
+
+Create a new file called ```Directory.Build.targets``` and define there references to nuget packages and its version. From ```csproj``` files remove version, only nuget name should be there.
+
+After this change we can see that in both projects (libs) the same version of nuget is used:   
+![central-nugets.png](./images/central-nugets.png)
 
 [Managing Package Versions Centrally](./NuGets/ManagingPackageVersionsCentrally)
 
 Links:   
 https://docs.microsoft.com/en-us/visualstudio/msbuild/customize-your-build?view=vs-2019   
+https://stu.dev/managing-package-versions-centrally/   
 http://code.fitness/post/2018/03/directory-build-props.html   
 https://www.codementor.io/@rowlandbanks/lets-fix-your-c-project-structure-13om1krhqz   
+https://www.youtube.com/watch?v=GolKKJmqxoc   
 
 # Expression trees
 ## Expression trees basics
