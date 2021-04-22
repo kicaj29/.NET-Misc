@@ -293,7 +293,7 @@ We can see that there is conflict between version 13.0.1 and 13.0.0.
 
     IT LOOKS THAT IN THIS FILE WE CANNOT PLAY WITH NUGET PACKAGES!
 
-  * [Directory.Build.targets](\ManagingPackageVersionsCentrally\Use-Directory.Build.targets\Directory.Build.targets)
+  * [Directory.Build.targets](./ManagingPackageVersionsCentrally/Use-Directory.Build.targets/Directory.Build.targets)
   
     "Directory.Build.targets is imported from Microsoft.Common.targets after importing .targets files from NuGet packages. So, **it can override** properties and targets defined in most of the build logic, or set properties for all your projects regardless of what the individual projects set."   
 
@@ -306,7 +306,7 @@ We can see that there is conflict between version 13.0.1 and 13.0.0.
     After this change we can see that in both projects (libs) the same version of nuget is used:   
     ![central-nugets.png](./images/central-nugets.png)
 
-  Additional to these 2 files there is file [Directory.Packages.props](NuGets\ManagingPackageVersionsCentrally\Use-Directory.Packages.props\Directory.Packages.props) that is managed by nuget and it also can be used to manage packages centrally.
+  Additional to these 2 files there is file [Directory.Packages.props](./NuGets/ManagingPackageVersionsCentrally/Use-Directory.Packages.props/Directory.Packages.props) that is managed by nuget and it also can be used to manage packages centrally.
 
   SUMMARY: I think it is better to use ```Directory.Build.targets``` instead of ```Directory.Packages.props``` because ```Directory.Build.targets``` can add a nuget package to all csprojs in solution without a need to update these csprojs while ```Directory.Packages.props``` requires entry in every csproj.
 
