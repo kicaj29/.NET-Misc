@@ -32,6 +32,7 @@
 - [Discards](#discards)
 - [Deconstruct](#deconstruct)
 - [CultureInfoExamples](#cultureinfoexamples)
+- [Lambda closures](#lambda-closures)
 
 # Throw vs ThrowEx
 throw ex - shorter stack trace   
@@ -516,3 +517,15 @@ https://stackoverflow.com/questions/3550213/in-c-sharp-what-is-the-difference-be
 
 ![culture_info_upper_case.png](./images/culture_info_upper_case.png)   
 >NOTE: to see a difference on the screen a font that properly renders these characters must be used! That`s why the same example is rendered differently on Console and WinForms apps because they use different fonts!
+
+# Lambda closures
+
+[Lambda closures](./LambdaClosure)
+
+Closures causes worse performance in runtime because C# compiler cannot use caching for delegates.
+
+>NOTE: "The main strategy when using lambdas is avoiding closures. In such a case, a created delegate will always be cached with no impact on traffic."
+
+Links:
+* https://blog.jetbrains.com/dotnet/2014/07/24/unusual-ways-of-boosting-up-app-performance-lambdas-and-linqs/
+* https://www.simplethread.com/c-closures-explained/
