@@ -11,7 +11,7 @@ namespace UsingAndDispose
             // https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/using-statement
             // "The using statement ensures that Dispose (or DisposeAsync) is called even if an exception occurs within the using block."
 
-
+            using(FileWriter fw = new FileWriter())
             using (CustomerService custSvc = reg.GetCusomterService())
             {
                 // Dispose method is not called when debugging in VS
