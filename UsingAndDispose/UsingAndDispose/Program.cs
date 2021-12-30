@@ -7,6 +7,12 @@ namespace UsingAndDispose
     {
         static void Main(string[] args)
         {
+
+            using (_ = new FileWriter())
+            {
+
+            }
+
             ServiceRegistry reg = new ServiceRegistry();
             // https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/using-statement
             // "The using statement ensures that Dispose (or DisposeAsync) is called even if an exception occurs within the using block."

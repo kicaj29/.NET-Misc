@@ -13,6 +13,14 @@ namespace TternaryOperator
 
             int x = false ? 5 : 55;
 
+
+            Customer c = null;
+
+            if (c?.IsActive == false)
+            {
+                Console.WriteLine("Customer is not active");
+            }
+
             Console.WriteLine("Hello World!");
         }
     }
