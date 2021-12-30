@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NUnit.Framework;
+using System;
 
 namespace TternaryOperator
 {
@@ -15,6 +16,11 @@ namespace TternaryOperator
 
 
             Customer c = null;
+
+            // this will not compile because you cannot assing int? to int
+            // int age = c?.Age;
+
+            Assert.AreEqual(66, c?.Age);
 
             if (c?.IsActive == false)
             {

@@ -9,5 +9,6 @@ namespace TternaryOperator
     public class Customer
     {
         public bool IsActive { get; init; } = true;
+        public int Age { get; init; } = 67;
     }
 }
