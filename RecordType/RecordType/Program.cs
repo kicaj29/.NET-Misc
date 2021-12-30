@@ -16,6 +16,10 @@ namespace RecordType
                 // the reference is the same
                 Console.WriteLine("The same person (record)");
             }
+
+            // use with to create a new record but with some fields modified
+            var pRecord3 = pRecord1 with { LastName = "Wacek" };
+
             pRecord1 = pRecord2;
             pRecord1.FirstName = "New Name";
             Console.WriteLine(pRecord2.FirstName); // will print New Name because record type is a reference type
