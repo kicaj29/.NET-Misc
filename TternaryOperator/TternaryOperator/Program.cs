@@ -7,7 +7,7 @@ namespace TternaryOperator
     {
         static void Main(string[] args)
         {
-            int? a = 2;
+            int? a = null;
             int b = a ?? -1;
             Console.WriteLine(b);  // output: -1
 
