@@ -11,9 +11,9 @@ namespace HashFunctions
 
             Stopwatch sw = new Stopwatch();
             sw.Start();
-            for(int index =0; index < 200; index++)
+            for(int index =0; index < 1000; index++)
             {
-                HashCode.Combine("AAAAAAA", "BBBBBBB", "CCCCCCCC", "DDDDDDD", "EEEEEEE", "FFFFFFF");
+                HashCode.Combine("AAAAAAA" + index.ToString(), "BBBBBBB", "CCCCCCCC", "DDDDDDD", "EEEEEEE", "FFFFFFF");
             }
             sw.Stop();
             Console.WriteLine(sw.Elapsed);
