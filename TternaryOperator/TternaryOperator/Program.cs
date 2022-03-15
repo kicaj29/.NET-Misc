@@ -7,6 +7,13 @@ namespace TternaryOperator
     {
         static void Main(string[] args)
         {
+            string sX = null;
+            string sY = string.Empty;
+
+            // ?? distinguish null and string.empty, they are not treated as the same value like in string.IsNullOrEmpty
+            string s1 = sX ?? "x was null";
+            string s2 = sY ?? "y was null";
+
             int? a = null;
             int b = a ?? -1;
             Console.WriteLine(b);  // output: -1
