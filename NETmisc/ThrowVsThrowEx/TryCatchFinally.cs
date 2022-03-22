@@ -10,6 +10,20 @@ namespace ThrowVsThrowEx
     {
         public void Test()
         {
+
+            try
+            {
+                throw new MyException();
+            }
+            catch (Exception ex)
+            {
+
+            }
+            catch (MyException ex)
+            {
+
+            }
+
             try
             {
                 try
