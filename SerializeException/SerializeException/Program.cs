@@ -1,5 +1,8 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.IO;
+using System.Text;
+using System.Xml.Serialization;
 
 namespace SerializeException
 {
@@ -16,6 +19,14 @@ namespace SerializeException
             catch(Exception ex)
             {
                 var s1 = Newtonsoft.Json.JsonConvert.SerializeObject(ex);
+
+                XmlSerializer serializer = new XmlSerializer(typeof(CustomerException));
+                StringBuilder sb = new StringBuilder();
+                TextWriter writer = new StringWriter(sb);
+                writer.Write(ex);
+
+                var s1xml = sb.ToString();
+
 
                 try
                 {

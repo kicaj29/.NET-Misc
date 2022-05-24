@@ -7,7 +7,10 @@ namespace SerializeException
 {
     public class CustomerException : Exception
     {
+        public CustomerException() : base()
+        {
 
+        }
         public CustomerException(string firstName, string secondName) : base()
         {
             this.FirstName = firstName;
