@@ -19,6 +19,9 @@ namespace SerializeException
             catch(Exception ex)
             {
                 var s1 = Newtonsoft.Json.JsonConvert.SerializeObject(ex);
+                Customer c = new Customer("Jacek", "Kowalski");
+
+                var s1Customer = System.Text.Json.JsonSerializer.Serialize(c, new System.Text.Json.JsonSerializerOptions());
 
                 XmlSerializer serializer = new XmlSerializer(typeof(CustomerException));
                 StringBuilder sb = new StringBuilder();
@@ -30,6 +33,7 @@ namespace SerializeException
 
                 try
                 {
+
                     // https://github.com/dotnet/runtime/issues/43026
                     var s2 = System.Text.Json.JsonSerializer.Serialize(ex, new System.Text.Json.JsonSerializerOptions()
                     {
