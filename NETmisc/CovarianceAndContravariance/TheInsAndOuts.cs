@@ -12,9 +12,11 @@ namespace CovarianceAndContravariance
         {
             ICovariant<Fruit> fruit = new Covariant<Fruit>();
             ICovariant<Apple> apple = new Covariant<Apple>();
+            ICovariant<Book> book = new Covariant<Book>();
 
             Covariant(fruit);
             Covariant(apple); //apple is being upcasted to fruit, without the out keyword this will not compile
+            // Covariant(book);  //this will not compile because book does not inherit from Fruit class
         }
 
         public void Contravariance()
@@ -28,12 +30,12 @@ namespace CovarianceAndContravariance
 
         private void Covariant(ICovariant<Fruit> fruit)
         {
-            
+
         }
 
         private void Contravariant(IContravariant<Apple> apple)
         {
-            
+
         }
     }
 }

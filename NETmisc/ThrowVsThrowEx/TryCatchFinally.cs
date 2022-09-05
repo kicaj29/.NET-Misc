@@ -19,10 +19,6 @@ namespace ThrowVsThrowEx
             {
 
             }
-            catch (MyException ex)
-            {
-
-            }
 
             try
             {
