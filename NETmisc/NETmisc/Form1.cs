@@ -60,5 +60,10 @@ namespace NETmisc
             // DynamicVarObject.Go();
             DynamicVarObject.ObjectVsDynamic();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DynamicVarObject.ConvertFromStringJsonToDynamic();
+        }
     }
 }

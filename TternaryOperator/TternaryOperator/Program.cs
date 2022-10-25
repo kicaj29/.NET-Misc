@@ -10,6 +10,7 @@ namespace TternaryOperator
             string sX = null;
             string sY = string.Empty;
 
+
             // ?? distinguish null and string.empty, they are not treated as the same value like in string.IsNullOrEmpty
             string s1 = sX ?? "x was null";
             string s2 = sY ?? "y was null";

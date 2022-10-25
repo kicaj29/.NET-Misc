@@ -47,7 +47,7 @@ namespace dynamicVSvarVSobject
 
         public static void Go()
         {
-            
+
             //1. var does not allow the type of value assigned to be changed after it is assigned to.
             //   dynamic supports it also object supports it.
 
@@ -67,8 +67,8 @@ namespace dynamicVSvarVSobject
                 City = "Katowice",
                 Street = "Mikolowska"
             };
-            
-            
+
+
 
             //3. dynamic variables can be used to create properties and return values from a function.
             //   var variables cannot be used for property or return values from a function. They can only be used as local variable in a function.
@@ -82,7 +82,7 @@ namespace dynamicVSvarVSobject
             var v4 = i4;        //no boxing
 
             // https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/reference-types
-            // !!!"As part of the process, variables of type dynamic are compiled into variables of type object. 
+            // !!!"As part of the process, variables of type dynamic are compiled into variables of type object.
             //  Therefore, type dynamic exists only at compile time, not at run time."!!!
 
             dynamic d4 = i4;    //probably also boxing because MSDN says that dynamic types exsists only during compilation!
@@ -115,7 +115,7 @@ namespace dynamicVSvarVSobject
             object obj = 1;
 
             Debug.WriteLine((string)dyn.GetType().Name);    // prints Int32
-            Debug.WriteLine(obj.GetType().Name);            // prints Int32  
+            Debug.WriteLine(obj.GetType().Name);            // prints Int32
 
             dyn = dyn + 3;                                  // 4
             // obj = obj + 3; // compilation error
@@ -168,8 +168,15 @@ namespace dynamicVSvarVSobject
 
             // "So, if you often use the object keyword and have to perform a lot of casting
             // and/or use reflection to call methods and properties of objects,
-            // you probably should take a look at the dynamic keyword. 
+            // you probably should take a look at the dynamic keyword.
             // In some cases it’s more convenient than object and with less code to write."
+
+        }
+
+
+        public static void ConvertFromStringJsonToDynamic()
+        {
+            string jsonString = "{\"Type\": \"Notification\", \"MessageId\": \"d9a5ec79-ffa4-4da4-8c9c-e8a4cd7a39a9\", \"TopicArn\": \"arn:aws:sns:us-east-1:000000000000:hxp-audit-events-topic\", \"Message\": \"{\\\"specversion\\\":\\\"1.0\\\",\\\"id\\\":\\\"e1b1808b-c8f1-4943-98c2-cd505c4d432e\\\",\\\"type\\\":\\\"hxp:audit:event:v1\\\",\\\"source\\\":\\\"hxp:client:audit\\\",\\\"time\\\":\\\"2022-10-10T07:10:58.2291726Z\\\",\\\"data\\\":{\\\"appKey\\\":\\\"hxc\\\",\\\"context\\\":{\\\"id\\\":\\\"STORAGEINTEGRATIONTEST\\\",\\\"type\\\":\\\"environment\\\"},\\\"actor\\\":\\\"hxc.file.uploaded\\\",\\\"type\\\":\\\"hxc.file.uploaded\\\",\\\"subject\\\":{\\\"id\\\":\\\"94e3c3d6-ff63-47dc-b8e4-e7c8a59e57e7\\\",\\\"scope\\\":\\\"file\\\"},\\\"date\\\":\\\"2022-10-10T07:10:58.2190398Z\\\",\\\"message\\\":{\\\"general\\\":{\\\"description\\\":\\\"Uploaded file.\\\",\\\"duration\\\":7318.6465,\\\"serviceId\\\":\\\"ms_storage\\\",\\\"connectionId\\\":\\\"0HMLAHQ8AJITF\\\",\\\"type\\\":\\\"production\\\"},\\\"change\\\":[{\\\"field\\\":\\\"name\\\",\\\"value\\\":\\\"8050cc6e-ab03-468a-91e0-5bf486259e3d.txt\\\"},{\\\"field\\\":\\\"size\\\",\\\"value\\\":36},{\\\"field\\\":\\\"version\\\",\\\"value\\\":\\\"ORIGINAL\\\"},{\\\"field\\\":\\\"contentType\\\",\\\"value\\\":\\\"text/plain\\\"}]},\\\"traceId\\\":\\\"599cb9139872e5e0babe59ae4aa9f9d7\\\"}}\", \"Timestamp\": \"2022-10-10T07:11:00.451Z\", \"SignatureVersion\": \"1\", \"Signature\": \"EXAMPLEpH+..\", \"SigningCertURL\": \"https://sns.us-east-1.amazonaws.com/SimpleNotificationService-0000000000000000000000.pem\", \"MessageAttributes\": {\"content-type\": {\"Type\": \"String\", \"Value\": \"application/cloudevents+json; charset=utf-8\"}}}";
 
         }
     }

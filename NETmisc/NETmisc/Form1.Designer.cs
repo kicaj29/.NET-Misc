@@ -33,6 +33,7 @@
             this.btnDoubleQuestionMark = new System.Windows.Forms.Button();
             this.btnTryCatchFinally = new System.Windows.Forms.Button();
             this.btnDynamicVarObject = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnThrowVsThrowEx
@@ -85,11 +86,22 @@
             this.btnDynamicVarObject.UseVisualStyleBackColor = true;
             this.btnDynamicVarObject.Click += new System.EventHandler(this.btnDynamicVarObject_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(230, 137);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(189, 23);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "ConvertFromJsonString";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(431, 351);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnDynamicVarObject);
             this.Controls.Add(this.btnTryCatchFinally);
             this.Controls.Add(this.btnDoubleQuestionMark);
@@ -108,6 +120,7 @@
         private System.Windows.Forms.Button btnDoubleQuestionMark;
         private System.Windows.Forms.Button btnTryCatchFinally;
         private System.Windows.Forms.Button btnDynamicVarObject;
+        private System.Windows.Forms.Button button1;
     }
 }
 
