@@ -68,5 +68,23 @@ Console.WriteLine($"name2: {name2}, dateOfBirth2: {dateOfBirth2}");
 
 // 7. https://sharplab.io/ - page where you can see how for example records are converted to the actually executed c# code
 
+// 8. Perf test
+
+PerformanceTest pt = new PerformanceTest();
+pt.RunTest();
+
+// MeasureClass: 139.3875[ms]
+// MeasureRecordClass: 97.5087[ms]
+// MeasureStruct: 24.4543[ms]
+// MeasureRecordStruct: 21.075[ms]
+
+// Struct is faster the class because value types are not always allocated on stack,
+// they are allocated "inline in containing types and deallocated when the stack unwinds or when their containing type gets deallocated."
+// So here array is reference type so struct is allocated on heap but it takes more space then class so it is faster
+// Not sure why record class is faster than class: TODO
+
+// https://mdfarragher.medium.com/whats-faster-in-c-a-struct-or-a-class-99e4761a7b76
+// https://learn.microsoft.com/en-us/dotnet/standard/design-guidelines/choosing-between-class-and-struct
+
 Console.ReadKey();
 
