@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 using System;
 
-namespace TternaryOperator
+namespace TernaryOperator
 {
     class Program
     {
@@ -28,12 +28,18 @@ namespace TternaryOperator
             // this will not compile because you cannot assing int? to int
             // int age = c?.Age;
 
-            Assert.AreEqual(66, c?.Age);
+            // Assert.AreEqual(66, c?.Age);    // NUnit.Framework.AssertionException: '  Expected: 66 But was:  null '
 
             if (c?.IsActive == false)
             {
                 Console.WriteLine("Customer is not active");
             }
+
+            // c = new Customer();
+            // _ = c?.Name ?? throw new ArgumentNullException("x");  // System.ArgumentNullException: 'Value cannot be null. (Parameter 'x')'
+            c = null;
+            _ = c?.Name ?? throw new ArgumentNullException("x");  // System.ArgumentNullException: 'Value cannot be null. (Parameter 'x')'
+
 
             Console.WriteLine("Hello World!");
         }
