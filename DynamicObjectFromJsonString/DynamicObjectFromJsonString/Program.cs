@@ -28,6 +28,15 @@ namespace DynamicObjectFromJsonString
             var dynamicObject1 = JsonConvert.DeserializeObject<dynamic>(dynamicObject.Message.ToString());
             Console.WriteLine(dynamicObject1.data.message.general.description);
 
+            string keyValueJson = "{\"username\":\"aaaaaaaaa\"}";
+            JsonElement jsonElementKeyValueJson = System.Text.Json.JsonSerializer.Deserialize<dynamic>(keyValueJson, new JsonSerializerOptions()
+            {
+                MaxDepth = 1
+            });
+
+            string userNameValue = jsonElementKeyValueJson.GetProperty("username").ToString();
+            Console.WriteLine(userNameValue);
+
             Console.WriteLine("END");
 
         }
