@@ -7,6 +7,10 @@ namespace TernaryOperator
     {
         static void Main(string[] args)
         {
+            string zz = null;
+            zz ??= "zz is set";
+            Console.WriteLine(zz); // will print: "zz is set"
+
             string sX = null;
             string sY = string.Empty;
 
@@ -39,6 +43,10 @@ namespace TernaryOperator
             // _ = c?.Name ?? throw new ArgumentNullException("x");  // System.ArgumentNullException: 'Value cannot be null. (Parameter 'x')'
             c = null;
             _ = c?.Name ?? throw new ArgumentNullException("x");  // System.ArgumentNullException: 'Value cannot be null. (Parameter 'x')'
+
+
+
+
 
 
             Console.WriteLine("Hello World!");
