@@ -21,7 +21,8 @@ namespace WeakReferenceExample
             // Add objects with a short weak reference to the cache.
             for (int i = 0; i < count; i++)
             {
-                _cache.Add(i, new WeakReference(new Data(i), false));
+                _cache.Add(i, new WeakReference(new Data(i), trackResurrection: false));
+                // if we call it with true then call GC.Collect(0); second time in program.cs
             }
         }
 
@@ -54,7 +55,7 @@ namespace WeakReferenceExample
                 else
                 {
                     // Object was obtained with the weak reference.
-                    Console.WriteLine("Regenerate object at {0}: No", index);
+                    Console.WriteLine("Regenerate object at {0}: No. IsFinalized: {1}", index, d.IsFinalized);
                 }
 
                 return d;

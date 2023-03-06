@@ -10,11 +10,18 @@ namespace WeakReferenceExample
     {
         private byte[] _data;
         private string _name;
+        public bool IsFinalized { get; set; }
 
         public Data(int size)
         {
             _data = new byte[size * 1024];
             _name = size.ToString();
+        }
+
+        ~Data()
+        {
+            Console.WriteLine("finalizer executed");
+            IsFinalized = true;
         }
 
         // Simple property.

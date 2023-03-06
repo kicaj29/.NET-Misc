@@ -1,5 +1,8 @@
 ﻿// https://learn.microsoft.com/en-us/dotnet/api/system.weakreference?view=net-7.0
 
+// https://www.philosophicalgeek.com/2014/08/14/prefer-weakreferencet-to-weakreference/
+// https://www.philosophicalgeek.com/2014/08/20/short-vs-long-weak-references-and-object-resurrection/
+
 // "A weak reference allows the garbage collector to collect an object while still allowing an application to access the object."
 
 // Create the cache.
@@ -11,6 +14,8 @@ Cache c = new Cache(cacheSize);
 
 string DataName = "";
 GC.Collect(0);
+GC.WaitForPendingFinalizers();
+//GC.Collect(0); // if we call WeakReference with trackResurrection = true call GC.Collect(0); to wipe objects from memory
 
 // Randomly access objects in the cache.
 for (int i = 0; i < c.Count; i++)
