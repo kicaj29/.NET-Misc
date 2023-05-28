@@ -12,5 +12,6 @@ namespace TernaryOperator
         public int Age { get; init; } = 67;
 
         public string? Name { get; set; }
+
     }
 }

@@ -7,7 +7,12 @@ namespace TernaryOperator
     {
         static void Main(string[] args)
         {
-            string zz = null;
+            string zz = "abc";
+            Customer c = null;
+            zz = c?.Name;
+            Console.WriteLine(zz); // will print: "" because zz will be set on null
+
+            zz = null;
             zz ??= "zz is set";
             Console.WriteLine(zz); // will print: "zz is set"
 
@@ -27,7 +32,7 @@ namespace TernaryOperator
             int x = false ? 5 : 55;
 
 
-            Customer c = null;
+            c = null;
 
             // this will not compile because you cannot assing int? to int
             // int age = c?.Age;
