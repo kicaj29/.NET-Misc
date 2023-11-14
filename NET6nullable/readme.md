@@ -1,0 +1,2 @@
+* Add to csproj `<TreatWarningsAsErrors>true</TreatWarningsAsErrors>` to see errors because by default nullable things are reported as warning.
+* NET6nullableDeserialization shows that even when `<Nullable>enable</Nullable>` and `<TreatWarningsAsErrors>true</TreatWarningsAsErrors>` then via deserialization we might still get objects/properties which are null.

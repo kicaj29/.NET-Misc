@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32526.322
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NET6nullable", "NET6nullable\NET6nullable.csproj", "{F551D98E-258A-4EFB-ABA2-7C208C1348AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NET6nullable", "NET6nullable\NET6nullable.csproj", "{F551D98E-258A-4EFB-ABA2-7C208C1348AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NET6nullableDeserialization", "NET6nullableDeserialization\NET6nullableDeserialization.csproj", "{F7C43374-CC10-4ECA-8D74-F8D00C51BD39}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{F551D98E-258A-4EFB-ABA2-7C208C1348AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F551D98E-258A-4EFB-ABA2-7C208C1348AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F551D98E-258A-4EFB-ABA2-7C208C1348AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7C43374-CC10-4ECA-8D74-F8D00C51BD39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7C43374-CC10-4ECA-8D74-F8D00C51BD39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7C43374-CC10-4ECA-8D74-F8D00C51BD39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7C43374-CC10-4ECA-8D74-F8D00C51BD39}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
