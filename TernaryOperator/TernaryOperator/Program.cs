@@ -10,6 +10,7 @@ namespace TernaryOperator
             string zz = "abc";
             Customer c = null;
             zz = c?.Name;
+            zz = c?.SomeMethod();
             Console.WriteLine(zz); // will print: "" because zz will be set on null
 
             zz = null;

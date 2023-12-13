@@ -13,5 +13,10 @@ namespace TernaryOperator
 
         public string? Name { get; set; }
 
+        public string SomeMethod()
+        {
+            return "aaaa";
+        }
+
     }
 }
