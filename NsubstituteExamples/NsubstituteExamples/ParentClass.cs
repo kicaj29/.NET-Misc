@@ -13,11 +13,18 @@ namespace NsubstituteExamples
            Console.WriteLine("ParentClass.DoSomething() called");
         }
 
-        public List<string> MethodWithParamsAndReturnValue(string a, int b)
+        public List<string> TwoParamsAndReturnList(string a, int b)
         {
-            Console.WriteLine("ParentClass.MethodWithParamsAndReturnValue() called");
+            Console.WriteLine("ParentClass.TwoParamsAndReturnList() called");
 
             return ["abc", "xyz"];
+        }
+
+        public async Task<List<string>> MethodWithParamsAndReturnValueAsync(string a, int b)
+        {
+            Console.WriteLine("ParentClass.MethodWithParamsAndReturnValueAsync() called");
+
+            return await Task.FromResult(new List<string>(new string[] { "abc", "xyz" }));
         }
     }
 }

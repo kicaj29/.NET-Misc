@@ -10,6 +10,8 @@ namespace NsubstituteExamples
     {
         void MethodWithNoParams();
 
-        List<string> MethodWithParamsAndReturnValue(string a, int b);
+        List<string> TwoParamsAndReturnList(string a, int b);
+
+        Task<List<string>> MethodWithParamsAndReturnValueAsync(string a, int b);
     }
 }

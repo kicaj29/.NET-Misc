@@ -13,9 +13,14 @@ namespace NsubstituteExamples
             parent.MethodWithNoParams();
         }
 
-        public List<string> MethodWithParamsAndReturnValue(string a, int b)
+        public List<string> TwoParamsAndReturnList(string a, int b)
         {
-            return parent.MethodWithParamsAndReturnValue(a, b);
+            return parent.TwoParamsAndReturnList(a, b);
+        }
+
+        public async Task<List<string>> MethodWithParamsAndReturnValueAsync(string a, int b)
+        {
+            return await parent.MethodWithParamsAndReturnValueAsync(a, b);
         }
     }
 }
