@@ -14,9 +14,15 @@ namespace NsubstituteExamples.Tests
         {
             IParent parent = Substitute.For<IParent>();
             IChild child = new ChildClass(parent);
-            child.MethodWithNoParams();
 
+            child.MethodWithNoParams();
             parent.Received().MethodWithNoParams();
+
+            child.MethodWithParamsAndReturnValue("abc", 123).Returns(["qq", "ww"]);
+            List<string> listString = child.MethodWithParamsAndReturnValue("abc", 123);
+            parent.Received().MethodWithParamsAndReturnValue("abc", 123);
+            Assert.That(listString[0], Is.EqualTo("qq"));
+            Assert.That(listString[1], Is.EqualTo("ww"));
 
             Assert.Pass();
         }

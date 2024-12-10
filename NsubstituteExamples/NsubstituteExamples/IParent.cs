@@ -9,5 +9,7 @@ namespace NsubstituteExamples
     public interface IParent
     {
         void MethodWithNoParams();
+
+        List<string> MethodWithParamsAndReturnValue(string a, int b);
     }
 }

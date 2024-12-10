@@ -12,5 +12,10 @@ namespace NsubstituteExamples
         {
             parent.MethodWithNoParams();
         }
+
+        public List<string> MethodWithParamsAndReturnValue(string a, int b)
+        {
+            return parent.MethodWithParamsAndReturnValue(a, b);
+        }
     }
 }

@@ -12,5 +12,12 @@ namespace NsubstituteExamples
         {
            Console.WriteLine("ParentClass.DoSomething() called");
         }
+
+        public List<string> MethodWithParamsAndReturnValue(string a, int b)
+        {
+            Console.WriteLine("ParentClass.MethodWithParamsAndReturnValue() called");
+
+            return ["abc", "xyz"];
+        }
     }
 }
