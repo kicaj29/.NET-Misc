@@ -26,5 +26,12 @@ namespace NsubstituteExamples
 
             return await Task.FromResult(new List<string>(new string[] { "abc", "xyz" }));
         }
+
+        public async Task<string> HandlePersonAsync(Person person)
+        {
+            Console.WriteLine("ParentClass.HandlePersonAsync() called");
+
+            return await Task.FromResult($"{person.Name}_{person.Age}");
+        }
     }
 }

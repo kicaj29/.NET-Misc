@@ -22,5 +22,10 @@ namespace NsubstituteExamples
         {
             return await parent.MethodWithParamsAndReturnValueAsync(a, b);
         }
+
+        public async Task<string> HandlePersonAsync(Person person)
+        {
+            return await parent.HandlePersonAsync(person);
+        }
     }
 }

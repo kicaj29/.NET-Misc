@@ -13,5 +13,7 @@ namespace NsubstituteExamples
         List<string> TwoParamsAndReturnList(string a, int b);
 
         Task<List<string>> MethodWithParamsAndReturnValueAsync(string a, int b);
+
+        Task<string> HandlePersonAsync(Person person);
     }
 }
