@@ -2,13 +2,9 @@
 {
     public class Car
     {
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
         public int AmountOfDoors { get; set; }
 
-        public Car(string name, int amountOfDoors)
-        {
-            Name = name;
-            AmountOfDoors = amountOfDoors;
-        }
+        public Owner Owner { get; set; } = new Owner();
     }
 }
