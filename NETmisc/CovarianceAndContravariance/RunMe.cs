@@ -11,9 +11,11 @@ namespace CovarianceAndContravariance
     {
         public static void Run()
         {
-            /*RequeueVisibilityTimeoutOption<Exception>[] myArray = [
+            IRequeueVisibilityTimeoutOption<Exception>[] myArray = [
                 new RequeueVisibilityTimeoutOption<InvalidOperationException>()
-                ];*/
+                ];
+
+            bool isForException = myArray[0].IsForException(new InvalidOperationException());
 
             var cc = new TheInsAndOuts();
             cc.Covariance();

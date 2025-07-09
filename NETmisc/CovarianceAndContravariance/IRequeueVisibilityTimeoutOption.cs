@@ -10,13 +10,10 @@ namespace CovarianceAndContravariance
     /// Specifies the options for re-queuing visibility timeout.
     /// </summary>
     /// <typeparam name="TException">The type of exception that this requeue visibility timeout option applies to.</typeparam>
-    public class RequeueVisibilityTimeoutOption<TException> : IRequeueVisibilityTimeoutOption<TException> where TException : Exception
+    public interface IRequeueVisibilityTimeoutOption<out TException> where TException : Exception
     {
-        public bool IsForException(Exception ex)
-        {
-            return typeof(TException) == ex.GetType();
-        }
+        bool IsForException(Exception ex);
 
-        public Func<Task<int>>? GetVisibilityTimeoutAction { get; set; }
+        Func<Task<int>>? GetVisibilityTimeoutAction { get; set; }
     }
 }
