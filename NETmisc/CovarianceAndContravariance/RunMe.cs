@@ -16,6 +16,7 @@ namespace CovarianceAndContravariance
                 ];
 
             bool isForException = myArray[0].IsForException(new InvalidOperationException());
+            bool isForException1 = myArray[0].IsForException(new Exception());
 
             var cc = new TheInsAndOuts();
             cc.Covariance();
