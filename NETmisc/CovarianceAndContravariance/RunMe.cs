@@ -15,8 +15,14 @@ namespace CovarianceAndContravariance
                 new RequeueVisibilityTimeoutOption<InvalidOperationException>()
                 ];
 
-            bool isForException = myArray[0].IsForException(new InvalidOperationException());
-            bool isForException1 = myArray[0].IsForException(new Exception());
+            bool isForExceptionTrue = myArray[0].IsForException(new InvalidOperationException());
+            bool isForExceptionFalse = myArray[0].IsForException(new Exception());
+
+            /* This will not compile:
+            RequeueVisibilityTimeoutOption<Exception>[] myArray = [
+                new RequeueVisibilityTimeoutOption<InvalidOperationException>()
+                ];
+            */
 
             var cc = new TheInsAndOuts();
             cc.Covariance();
